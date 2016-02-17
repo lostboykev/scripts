@@ -1,0 +1,20 @@
+
+cd /home/kevint/public_html/
+git clone https://github.com/magento/magento2.git .
+git checkout tags/2.0.2 -b 2.0.2
+curl -sS https://getcomposer.org/installer | php
+./composer.phar config -g github-oauth.github.com c5605a201984cce8b651003b75cccc5806112d3d
+./composer.phar install
+./bin/magento setup:install --db-host=localhost --db-name=kevint_mage --db-user=kevint_mage --db-password=uFm0197z9U70d1C --backend-frontname=admin --admin-user=admin --admin-password=uFm0197z9U70d1C --admin-email=kevin.t@eboundhost.com  --admin-firstname=Kevin --admin-lastname=Turner --base-url=http://kevintebh.jetrails.io/ --base-url-secure=https://kevintebh.jetrails.io/ --language=en_US --currency=USD --use-rewrites=1 --use-secure=0 --use-secure-admin=0 --cleanup-database
+cd /home/kevint/public_html/
+find ./ -type d -exec chmod 755 {} \;
+find ./ -type f -exec chmod 644 {} \;
+find ./pub/media/ -type d -exec chmod 777 {} \;
+find ./pub/static/ -type d -exec chmod 777 {} \;
+find ./var -type d -exec chmod 777 {} \;
+sed -i 's/0770;/0755;/g' lib/internal/Magento/Framework/Filesystem/DriverInterface.php
+sed -i 's/0660;/0644;/g' lib/internal/Magento/Framework/Filesystem/DriverInterface.php
+sed -i 's/0770,/0755,/g' lib/internal/Cm/Cache/Backend/File.php
+sed -i 's/0660,/0644,/g' lib/internal/Cm/Cache/Backend/File.php
+chown -R kevint:kevint *
+chown -R kevint:kevint .*

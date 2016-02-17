@@ -1,0 +1,8 @@
+#!/bin/bash
+exim -bpc | awk '{ if ($1 >= 300) print $0; else;}' > /tmp/tmpqueue
+if [ -s /tmp/tmpqueue ]; then
+        /bin/mail -s "Exim high queue $(hostname) = $(cat /tmp/tmpqueue)" support@eboundhost.com < /tmp/tmpqueue && rm -f /tmp/tmpqueue
+else
+        rm -f /tmp/tmpqueue && exit
+fi
+
