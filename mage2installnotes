@@ -1,4 +1,4 @@
-
+INCOMPLETE AND INCORRECT AND NOT VERBOSE
 cd /home/kevint/public_html/
 git clone https://github.com/magento/magento2.git .
 git checkout tags/2.0.2 -b 2.0.2
