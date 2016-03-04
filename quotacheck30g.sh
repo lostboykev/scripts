@@ -18,8 +18,10 @@ for element in $quota; do
  owner=$(grep "OWNER\=" /var/cpanel/users/$user | cut -d "=" -f2) ##reseller/owner of account##
  output=$(echo "User: $user // Usage: $size "GB" // Owner: $owner") ##variable that echos user; disk quota; owner/reseller##
 
- echo $output |sed '/^$/d'   >> ./tmpquota  ##above variable output appended into tempfile##
- cat ./tmpquota | sort -k 5 -n  
+ echo $output |sed '/^$/d'   >> ./tmpquota   ##above variable output appended into tempfile##
 
 
 done
+
+sort -k5 -n ./tmpquota ##output list sorted by size
+
