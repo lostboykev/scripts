@@ -1,4 +1,4 @@
-EMAIL="alerts@eboundhost.com"
+EMAIL="alerts@example.com"
 LOG="/var/log/exim_queue.log"
 QUEUE=`/usr/sbin/exim -bpc`
 
