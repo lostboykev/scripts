@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#NOT MY WORK. CREDIT TO Ivan P
 clear;
 setterm -bold on
 echo "PLEASE SELECT WHICH DOMAIN YOU WANT TO HAVE DEV REPLICATION: "
